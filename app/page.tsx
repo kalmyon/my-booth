@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import ProductCard from "@/components/ProductCard";
 
 export default async function Home() {
   const { data, error } = await supabase
@@ -14,11 +15,10 @@ export default async function Home() {
       <h1>商品一覧</h1>
 
       {data?.map((product) => (
-        <div key={product.id}>
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-          <p>{product.price}円</p>
-        </div>
+        <ProductCard
+          key={product.id}
+          product={product}
+        />
       ))}
     </main>
   );
