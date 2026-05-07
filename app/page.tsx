@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import ProductCard from "@/components/ProductCard";
+import Link from "next/link";
 
 export default async function Home() {
   const { data, error } = await supabase
@@ -18,10 +19,13 @@ export default async function Home() {
 
       <div className="grid gap-4">
         {data?.map((product) => (
-        <ProductCard
+        <Link
           key={product.id}
-          product={product}
-        />
+          href={`/products/${product.id}`}
+        >
+          <ProductCard product={product}/>
+
+        </Link>
       ))}
       </div>
     </main>
