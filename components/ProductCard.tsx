@@ -11,12 +11,18 @@ type Props = {
 
 export default function ProductCard({ product }: Props) {
   return (
-    <div>
-      <h2>{product.title}</h2>
+    <div className="border rounded-lg p-4 shadow">
+      <h2 className="text-xl font-bold">
+        {product.title}
+      </h2>
 
-      <p>{product.description}</p>
+      <p className="mt-2 text-gray-600">
+        {product.description}
+      </p>
 
-      <p>{product.price}円</p>
+      <p className="mt-4 text-lg">
+        {product.price}円
+      </p>
     </div>
   );
 }

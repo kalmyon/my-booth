@@ -11,15 +11,19 @@ export default async function Home() {
   }
 
   return (
-    <main>
-      <h1>商品一覧</h1>
+    <main className="max-w-4xl mx-auto p-8">
+      <h1 className="text-3xl font-bold mb-8">
+        商品一覧
+      </h1>
 
-      {data?.map((product) => (
+      <div className="grid gap-4">
+        {data?.map((product) => (
         <ProductCard
           key={product.id}
           product={product}
         />
       ))}
+      </div>
     </main>
   );
 }
