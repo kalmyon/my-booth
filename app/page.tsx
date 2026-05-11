@@ -16,6 +16,12 @@ export default async function Home() {
       <h1 className="text-3xl font-bold mb-8">
         商品一覧
       </h1>
+      <Link
+        href="/products/new"
+        className="inline-block mb-6 bg-black text-white px-4 py-2 rounded"
+      >
+        商品作成
+      </Link>
 
       <div className="grid gap-4">
         {data?.map((product) => (
