@@ -11,7 +11,7 @@ export default function NewProductPage() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>)
+  async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>)
   {
     e.preventDefault();
 
