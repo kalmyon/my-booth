@@ -15,6 +15,20 @@ export default function NewProductPage() {
   {
     e.preventDefault();
 
+    if (title.trim() === "") {
+      alert("商品名を入力してください");
+      return;
+    }
+
+    if (description.trim() === "") {
+      alert("商品説明を入力してください");
+      return;
+    }
+
+    if (Number(price) <= 0) {
+      alert("価格は1円以上にしてください");
+      return;
+    }
     const { error } = await supabase
       .from("products")
       .insert({
