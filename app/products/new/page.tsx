@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase-client";
-
+import toast from "react-hot-toast"
 
 export default function NewProductPage() {
   const router = useRouter();
@@ -17,17 +17,17 @@ export default function NewProductPage() {
     e.preventDefault();
 
     if (title.trim() === "") {
-      alert("商品名を入力してください");
+      toast.error("商品名を入力してください");
       return;
     }
 
     if (description.trim() === "") {
-      alert("商品説明を入力してください");
+      toast.error("商品説明を入力してください");
       return;
     }
 
     if (Number(price) <= 0) {
-      alert("価格は1円以上にしてください");
+      toast.error("価格は1円以上にしてください");
       return;
     }
 
@@ -43,11 +43,12 @@ export default function NewProductPage() {
 
       if ( error ){
         setLoading(false);
-        alert("作成失敗");
+        toast.error("作成失敗");
         console.log(error);
         return;
       }
 
+      toast.success("商品を作成しました");
       router.push("/");
   }
 
