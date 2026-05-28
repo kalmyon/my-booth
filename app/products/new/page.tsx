@@ -10,6 +10,7 @@ export default function NewProductPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>)
   {
@@ -29,6 +30,9 @@ export default function NewProductPage() {
       alert("価格は1円以上にしてください");
       return;
     }
+
+    setLoading(true);
+
     const { error } = await supabase
       .from("products")
       .insert({
@@ -38,6 +42,7 @@ export default function NewProductPage() {
       });
 
       if ( error ){
+        setLoading(false);
         alert("作成失敗");
         console.log(error);
         return;
@@ -87,9 +92,10 @@ export default function NewProductPage() {
         />
 
         <button
-          className="bg-black text-white p-2 rounded"
+          disabled = {loading}
+          className="bg-black text-white p-2 rounded disabled:opacity-50"
         >
-          作成
+          {loading ? "作成中..." : "作成"}
         </button>
       </form>
     </main>
